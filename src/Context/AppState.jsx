@@ -36,7 +36,7 @@ const AppState = (props) => {
       }
     })
     const data = await response.json()
-    data ?? setCurrentUserId(data?.user?._id)
+    setCurrentUserId(data?.user?._id)
   }
 
   const signUp = async () => {

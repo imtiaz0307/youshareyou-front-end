@@ -24,12 +24,11 @@ const Navbar = () => {
             ?
             <li><NavLink to='/login' className='btn' onClick={() => setOpenMenu(!openMenu)}>Login</NavLink></li>
             :
-            <button className='btn' style={{fontSize: '1rem'}} onClick={() => {
-              window.location.replace('/login')
+            <NavLink to='/login' className='btn' style={{fontSize: '1rem'}} onClick={() => {
               setOpenMenu(!openMenu)
               localStorage.removeItem('token')
               getAllPosts()
-            }}>Logout</button>
+            }}>Logout</NavLink>
           }
         </ul>
       </nav>
