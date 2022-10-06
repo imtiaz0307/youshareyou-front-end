@@ -5,9 +5,8 @@ import AppContext from '../Context/AppContext'
 
 const Stories = () => {
   const { data, getAllPosts } = useContext(AppContext)
-  const reversed = data.reverse()
   useEffect(() => {
-    getAllPosts()
+      getAllPosts()
   }, [])
   return (
     <div className="feed">
@@ -16,7 +15,7 @@ const Stories = () => {
       <div className="stories">
         {
           data.length > 0 ?
-            reversed.map((elem, index) => {
+            data.map((elem, index) => {
               return (
                  <Story details={elem} key={index} />
               )

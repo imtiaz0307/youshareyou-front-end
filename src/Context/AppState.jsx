@@ -25,7 +25,7 @@ const AppState = (props) => {
   const getAllPosts = async () => {
     const response = await fetch(`${host}/feed/posts`)
     const jsonData = await response.json()
-    jsonData && setData(jsonData.data)
+    jsonData && setData(jsonData?.data)
   }
 
   const currentUser = async () => {
@@ -36,7 +36,7 @@ const AppState = (props) => {
       }
     })
     const data = await response.json()
-    setCurrentUserId(data?.user?._id)
+    data ?? setCurrentUserId(data?.user?._id)
   }
 
   const signUp = async () => {
@@ -48,7 +48,7 @@ const AppState = (props) => {
       body: JSON.stringify({ username: username.current.value, email: signupEmail.current.value, password: signupPassword.current.value })
     });
     const data = await response.json()
-    data.token && localStorage.setItem('token', data.token)
+    data?.token && localStorage.setItem('token', data.token)
     getAllPosts()
     currentUser()
     return data
@@ -63,7 +63,7 @@ const AppState = (props) => {
       body: JSON.stringify({ email: loginEmail.current.value, password: loginPassword.current.value })
     });
     const data = await response.json()
-    data.token && localStorage.setItem('token', data.token)
+    data?.token && localStorage.setItem('token', data.token)
     getAllPosts()
     currentUser()
     return data
